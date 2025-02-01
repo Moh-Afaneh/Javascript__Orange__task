@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+
+      h1 {
+        color: #4f46e5;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #4f46e5;
+      }
+
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #333;
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: left;
+      }
+
+      p {
+        margin: 5px 0;
+      }
+
+      #originalText {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .result {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>String Manipulation Example</h1>
+    <div id="originalText">
+      <p>Original text: <span id="textDisplay">Welcome to Orange</span></p>
+    </div>
+    <button onclick="transformText()">Transform</button>
+    <div id="output"></div>
+
+    <script>
+      let text = "Welcome to Orange";
+
+      function transformText() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>toUpperCase:</strong> ${text.toUpperCase()}
+            <br><i>Explanation: The 'toUpperCase()' method converts all characters of the string to uppercase.</i>
+          </div>
+        `;
+
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>split and toUpperCase (Second Word):</strong> ${text
+              .split(" ")[1]
+              .toUpperCase()}
+            <br><i>Explanation: The 'split()' method splits the string by spaces and converts the second word ('to') to uppercase.</i>
+          </div>
+        `;
+
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>replace:</strong> ${text.replace(
+              "Welcome to",
+              "Hello from"
+            )}
+            <br><i>Explanation: The 'replace()' method replaces the string 'Welcome to' with 'Hello from'.</i>
+          </div>
+        `;
+
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>toLowerCase:</strong> ${text.toLowerCase()}
+            <br><i>Explanation: The 'toLowerCase()' method converts all characters of the string to lowercase.</i>
+          </div>
+        `;
+
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>replace with number:</strong> ${text.replace(text, 17)}
+            <br><i>Explanation: The 'replace()' method replaces the entire string 'Welcome to Orange' with the number 17.</i>
+          </div>
+        `;
+
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>slice and concatenate:</strong> ${
+              text.slice(0, 10) + " " + "Orange"
+            }
+            <br><i>Explanation: The 'slice()' method extracts a part of the string up to index 10, and 'Orange' is appended to it.</i>
+          </div>
+        `;
+
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>concatenate:</strong> ${text + " " + "Jordan"}
+            <br><i>Explanation: Concatenates the original text with the string 'Jordan'.</i>
+          </div>
+        `;
+
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>replace first letter of each word:</strong> ${text.replace(
+              /\b\w/g,
+              "*"
+            )}
+            <br><i>Explanation: The regular expression '\\b\\w' matches the first letter of each word and replaces it with '*'.</i>
+          </div>
+        `;
+      }
+    </script>
+  </body>
+</html>

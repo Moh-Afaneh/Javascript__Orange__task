@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Operations</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+      h1 {
+        color: #4f46e5;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #4f46e5;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #333;
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: left;
+      }
+      p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Array Operations</h1>
+    <button onclick="performOperations()">Run JavaScript</button>
+    <div id="output"></div>
+
+    <script>
+      function performOperations() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+
+        function logResult(description, value) {
+          console.log(description, value);
+          let p = document.createElement("p");
+          p.innerHTML = `<b>${description}:</b> ${JSON.stringify(value)}`;
+          outputDiv.appendChild(p);
+        }
+
+        let numbers1 = [1, 2, 3, 4, 5];
+        let fruits = ["apple", "banana", "cherry"];
+        let numbers2 = [4, 5, 6];
+
+        logResult("Original numbers1", numbers1);
+        logResult("Original fruits", fruits);
+        logResult("Original numbers2", numbers2);
+
+        // 1 - Loop through numbers1
+        numbers1.forEach((e) => console.log(e));
+
+        // 2 - Create an array with squared values
+        let numbersSquared = numbers1.map((e) => e * 2);
+        logResult("Squared numbers", numbersSquared);
+
+        // 3 - Filter out even numbers
+        let evenNumbers = numbers1.filter((e) => e % 2 === 0);
+        logResult("Even numbers", evenNumbers);
+
+        // 4 - Sum of numbers1
+        let sumNumbers = numbers1.reduce(
+          (acc, currentValue) => acc + currentValue,
+          0
+        );
+        logResult("Sum of numbers1", sumNumbers);
+
+        // 5 - Sort fruits alphabetically
+        let sortedFruits = [...fruits].sort();
+        logResult("Sorted fruits", sortedFruits);
+
+        // 6 - Reverse order of fruits
+        let reversedFruits = [...fruits].reverse();
+        logResult("Reversed fruits", reversedFruits);
+
+        // 7 - Concatenate two arrays
+        let combinedNumbers = numbers1.concat(numbers2);
+        logResult("Concatenated numbers", combinedNumbers);
+
+        // 8 - Slice and concatenate
+        let slicedNumbers = combinedNumbers
+          .slice(0, 2)
+          .concat(combinedNumbers.slice(4, 6));
+        logResult("Sliced numbers", slicedNumbers);
+
+        // 9 - Splice numbers1
+        let splicedNumbers = numbers1.splice(1, 1);
+        logResult("Spliced numbers", splicedNumbers);
+        logResult("Modified numbers1 after splice", numbers1);
+
+        // 10 - Index of 'apple' in fruits
+        let indexingArr = fruits.indexOf("apple");
+        logResult("Index of 'apple'", indexingArr);
+
+        // 11 - Join fruits into a string
+        let joinedArr = fruits.join(" ");
+        logResult("Joined fruits", joinedArr);
+
+        // 12 - Split joined string back into an array
+        let splitedArr = joinedArr.split(" ");
+        logResult("Split string into array", splitedArr);
+
+        // 13 - Find length of numbers1
+        let findLength = numbers1.length;
+        logResult("Length of numbers1", findLength);
+
+        // 14 - For...of loop (iterates over values)
+        let forOfValues = [];
+        for (let num of numbers1) {
+          forOfValues.push(num);
+        }
+        logResult("For...of loop values", forOfValues);
+
+        // 15 - For...in loop (iterates over keys)
+        let forInKeys = [];
+        for (let x in fruits) {
+          forInKeys.push(x);
+        }
+        logResult("For...in loop keys", forInKeys);
+
+        // 16 - Check if `fruits` is an array
+        logResult("Is 'fruits' an array?", Array.isArray(fruits));
+
+        // 17 - Create an array using Array.of()
+        let arr = Array.of(1, 2, 3, 4, 5);
+        logResult("Array created with Array.of()", arr);
+      }
+    </script>
+  </body>
+</html>

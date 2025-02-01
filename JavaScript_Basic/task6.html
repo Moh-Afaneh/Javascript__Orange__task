@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Task Exercises (console logs)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      h1 {
+        text-align: center;
+      }
+      button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: #0f172a;
+        color: white;
+        border: none;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Task Exercises</h1>
+    <button onclick="printEvenNumbers()">
+      Task 1: Print Even Numbers (for & while loops)
+    </button>
+    <button onclick="printEvenAndOddNumbers()">
+      Task 2: Even and Odd Numbers (Single for loop)
+    </button>
+    <button onclick="evenAndOddNumbers()">
+      Task 3: Separate Even and Odd Numbers (loops)
+    </button>
+    <button onclick="fizzBuzz()">Task 4: FizzBuzz (1 to 100)</button>
+    <button onclick="fizzBuzzFunction(1)">Task 5: FizzBuzz Function</button>
+    <button onclick="fizzBuzzRecursive(1)">Task 6: FizzBuzz Recursive</button>
+    <button onclick="convertToBanknotes(57, [25, 10, 5, 1])">
+      Task 7: Convert to Banknotes
+    </button>
+    <button onclick="countCharacter('Coding Academy by Orange', 'o')">
+      Task 8: Count Character Occurrence
+    </button>
+    <button onclick="numberRangeTasks()">Task 9: Number Ranges</button>
+    <button onclick="codingAcademyTasks()">
+      Task 10: CodingAcademy String and Array Tasks
+    </button>
+    <button onclick="sortEvensAndOdds()">
+      Task 11: Sort Even and Odd Numbers
+    </button>
+    <button onclick="mealGenerator()">Task 12: Meal Generator</button>
+
+    <script>
+      // 1. Print out all even numbers between 1 and 50, twice (one using a for loop and the other using a while loop).
+      function printEvenNumbers() {
+        console.log("Even Numbers using for loop:");
+        for (let i = 2; i <= 50; i += 2) {
+          console.log(i);
+        }
+
+        console.log("Even Numbers using while loop:");
+        let i = 2;
+        while (i <= 50) {
+          console.log(i);
+          i += 2;
+        }
+      }
+
+      // 2. Try solving the previous exercise using a single for loop.
+      function printEvenAndOddNumbers() {
+        console.log("Even Numbers:");
+        for (let i = 1; i <= 50; i++) {
+          if (i % 2 === 0) console.log(i);
+        }
+        console.log("Odd Numbers:");
+        for (let i = 1; i <= 50; i++) {
+          if (i % 2 !== 0) console.log(i);
+        }
+      }
+
+      // 3. Resolve Exercise 1 so that one loop prints out even numbers and the second prints out the odd ones.
+      function evenAndOddNumbers() {
+        console.log("Even Numbers:");
+        for (let i = 2; i <= 50; i += 2) {
+          console.log(i);
+        }
+
+        console.log("Odd Numbers:");
+        let i = 1;
+        while (i <= 50) {
+          console.log(i);
+          i += 2;
+        }
+      }
+
+      // 4. FizzBuzz! (1 to 100)
+      function fizzBuzz() {
+        console.log("FizzBuzz from 1 to 100:");
+        for (let i = 1; i <= 100; i++) {
+          if (i % 3 === 0 && i % 5 === 0) {
+            console.log("FizzBuzz");
+          } else if (i % 3 === 0) {
+            console.log("Fizz");
+          } else if (i % 5 === 0) {
+            console.log("Buzz");
+          } else {
+            console.log(i);
+          }
+        }
+      }
+
+      // 5. Rewrite FizzBuzz script with a function
+      function fizzBuzzFunction(number) {
+        if (number > 100) return;
+
+        if (number % 3 === 0 && number % 5 === 0) {
+          console.log("FizzBuzz");
+        } else if (number % 3 === 0) {
+          console.log("Fizz");
+        } else if (number % 5 === 0) {
+          console.log("Buzz");
+        } else {
+          console.log(number);
+        }
+
+        fizzBuzzFunction(number + 1);
+      }
+
+      // 6. FizzBuzz with recursion
+      function fizzBuzzRecursive(number) {
+        if (number > 100) return;
+        if (number % 3 === 0 && number % 5 === 0) {
+          console.log("FizzBuzz");
+        } else if (number % 3 === 0) {
+          console.log("Fizz");
+        } else if (number % 5 === 0) {
+          console.log("Buzz");
+        } else {
+          console.log(number);
+        }
+        fizzBuzzRecursive(number + 1);
+      }
+
+      // 7. Function to convert a number into specific banknotes
+      function convertToBanknotes(amount, notes) {
+        let result = [];
+        for (let note of notes) {
+          while (amount >= note) {
+            result.push(note);
+            amount -= note;
+          }
+        }
+        console.log(result);
+      }
+
+      // 8. Count the occurrence of a specific character in a string (case-insensitive)
+      function countCharacter(str, char) {
+        let count = 0;
+        for (let i = 0; i < str.length; i++) {
+          if (str[i].toLowerCase() === char.toLowerCase()) {
+            count++;
+          }
+        }
+        console.log(count);
+      }
+
+      // 9. Various number range tasks:
+      function numberRangeTasks() {
+        console.log("Task 9a: Numbers 0-20:");
+        for (let i = 0; i <= 20; i++) {
+          console.log(i);
+        }
+
+        console.log("Task 9b: Odd numbers from 3 to 29:");
+        for (let i = 3; i <= 29; i++) {
+          if (i % 2 !== 0) console.log(i);
+        }
+
+        console.log("Task 9c: Even numbers 12 down to -14:");
+        for (let i = 12; i >= -14; i--) {
+          if (i % 2 === 0) console.log(i);
+        }
+
+        console.log("Task 9d: Multiples of 3 between 50 and 20:");
+        for (let i = 50; i >= 20; i--) {
+          if (i % 3 === 0) console.log(i);
+        }
+      }
+
+      // 10. Initialize two variables: 'CodingAcademy' and the array and print each element
+      function codingAcademyTasks() {
+        let str = "CodingAcademy";
+        let arr = [7, 500, "KH404", "black", 36];
+
+        console.log("Task 10e: Print each element of the array:");
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr[i]);
+        }
+
+        console.log("Task 10f: Print each string character in reverse order:");
+        for (let i = str.length - 1; i >= 0; i--) {
+          console.log(str[i]);
+        }
+      }
+
+      // 11. Sort array into evens and odds
+      function sortEvensAndOdds() {
+        const arr = [7, 23, 18, 9, -13, 38, -10, 12, 0, 124];
+        let evens = [];
+        let odds = [];
+
+        for (let num of arr) {
+          if (num % 2 === 0) {
+            evens.push(num);
+          } else {
+            odds.push(num);
+          }
+        }
+
+        console.log("Even numbers:", evens);
+        console.log("Odd numbers:", odds);
+      }
+
+      // 12. Create meals from predefined categories
+      function mealGenerator() {
+        const proteinOptions = [
+          "chicken",
+          "pork",
+          "tofu",
+          "beef",
+          "fish",
+          "beans",
+        ];
+        const grainOptions = [
+          "rice",
+          "pasta",
+          "corn",
+          "potato",
+          "quinoa",
+          "crackers",
+        ];
+        const vegetableOptions = [
+          "peas",
+          "green beans",
+          "kale",
+          "edamame",
+          "broccoli",
+          "asparagus",
+        ];
+        const beverageOptions = [
+          "juice",
+          "milk",
+          "water",
+          "soy milk",
+          "soda",
+          "tea",
+        ];
+        const dessertOptions = [
+          "apple",
+          "banana",
+          "more kale",
+          "ice cream",
+          "chocolate",
+          "kiwi",
+        ];
+
+        let meals = [];
+        let numberOfMeals = 3; // Adjust this for how many meals you'd like
+
+        for (let i = 0; i < numberOfMeals; i++) {
+          const protein = getRandomElement(proteinOptions);
+          const grain = getRandomElement(grainOptions);
+          const vegetable = getRandomElement(vegetableOptions);
+          const beverage = getRandomElement(beverageOptions);
+          const dessert = getRandomElement(dessertOptions);
+
+          const meal = {
+            protein,
+            grain,
+            vegetable,
+            beverage,
+            dessert,
+          };
+
+          meals.push(meal);
+        }
+
+        console.log("Generated Meals:", meals);
+      }
+
+      function getRandomElement(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Operations</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+      h1 {
+        color: #4f46e5;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #4f46e5;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #333;
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: left;
+      }
+      p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Object Operations</h1>
+    <button onclick="performObjectOperations()">Run JavaScript</button>
+    <div id="output"></div>
+
+    <script>
+      "use strict";
+      function performObjectOperations() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+
+        function logResult(description, value) {
+          console.log(description, value);
+          let p = document.createElement("p");
+          p.innerHTML = `<b>${description}:</b> ${JSON.stringify(value)}`;
+          outputDiv.appendChild(p);
+        }
+
+        // Task 1: Create an object
+        const obj1 = {
+          name: "Adam",
+          age: 25,
+          gender: "male",
+        };
+        logResult("Original object", obj1);
+
+        // Task 2: Add a new property (major)
+        obj1.major = "MIS";
+        logResult("Added major", obj1);
+
+        // Task 3: Add an Address property using bracket notation
+        obj1["Address"] = "Jordan, Amman";
+        logResult("Added address", obj1);
+
+        // Task 4: Access property using dot notation
+        let x = obj1.name;
+        logResult("Accessed name", x);
+
+        // Task 5: Access property using bracket notation
+        logResult("Accessed age", obj1["age"]);
+      }
+    </script>
+  </body>
+</html>

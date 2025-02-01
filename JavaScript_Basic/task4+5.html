@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4 + 5</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+
+      h1 {
+        color: #4f46e5;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #4f46e5;
+      }
+
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #333;
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: left;
+      }
+
+      p {
+        margin: 5px 0;
+      }
+
+      .result {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Array Manipulation Example</h1>
+    <button onclick="transformArray()">Transform</button>
+    <div id="output"></div>
+
+    <script>
+      let testArr = ["Coding", "Academy", "By", "Orange"];
+      let fruit = ["banana", "apple", "orange", "watermelon"];
+      let vegetables = ["carrot", "tomato", "pepper", "lettuce"];
+
+      function transformArray() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = ""; // Clear previous output
+
+        // Example 1: push()
+        let beforePush = [...testArr];
+        testArr.push("Jordan");
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before push:</strong> ${JSON.stringify(beforePush)}
+            <br><strong>After push:</strong> ${JSON.stringify(testArr)}
+            <br><strong>Code:</strong> testArr.push("Jordan");
+          </div>
+        `;
+
+        // Example 2: slice(0, 2)
+        let slicedArr = testArr.slice(0, 2);
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before slice (0, 2):</strong> ${JSON.stringify(testArr)}
+            <br><strong>After slice (0, 2):</strong> ${JSON.stringify(
+              slicedArr
+            )}
+            <br><strong>Code:</strong> testArr.slice(0, 2);
+          </div>
+        `;
+
+        // Example 3: spread operator
+        let testArrmod = ["Welcome", "To", ...testArr];
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before spread:</strong> ${JSON.stringify(testArr)}
+            <br><strong>After spread:</strong> ${JSON.stringify(testArrmod)}
+            <br><strong>Code:</strong> let testArrmod = ["Welcome", "To", ...testArr];
+          </div>
+        `;
+
+        // Example 4: slice(1)
+        let sliceFromOne = testArr.slice(1);
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before slice (1):</strong> ${JSON.stringify(testArr)}
+            <br><strong>After slice (1):</strong> ${JSON.stringify(
+              sliceFromOne
+            )}
+            <br><strong>Code:</strong> testArr.slice(1);
+          </div>
+        `;
+
+        // Example 5: join()
+        let joinedArr = testArr.join(" ");
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before join:</strong> ${JSON.stringify(testArr)}
+            <br><strong>After join:</strong> ${joinedArr}
+            <br><strong>Code:</strong> testArr.join(" ");
+          </div>
+        `;
+
+        // Example 6: pop()
+        let beforePop = [...testArr];
+        testArr.pop();
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before pop:</strong> ${JSON.stringify(beforePop)}
+            <br><strong>After pop:</strong> ${JSON.stringify(testArr)}
+            <br><strong>Code:</strong> testArr.pop();
+          </div>
+        `;
+
+        // Example 7: splice(1, 2)
+        let beforeSplice = [...testArr];
+        testArr.splice(1, 2);
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before splice:</strong> ${JSON.stringify(beforeSplice)}
+            <br><strong>After splice:</strong> ${JSON.stringify(testArr)}
+            <br><strong>Code:</strong> testArr.splice(1, 2);
+          </div>
+        `;
+
+        // Additional Examples with fruit and vegetables arrays:
+
+        // Example 8: pop() on vegetables
+        let beforePopVegetables = [...vegetables];
+        vegetables.pop();
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before pop (vegetables):</strong> ${JSON.stringify(
+              beforePopVegetables
+            )}
+            <br><strong>After pop (vegetables):</strong> ${JSON.stringify(
+              vegetables
+            )}
+            <br><strong>Code:</strong> vegetables.pop();
+          </div>
+        `;
+
+        // Example 9: unshift() on fruit
+        let beforeUnshift = [...fruit];
+        fruit.unshift("newFruit");
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before unshift (fruit):</strong> ${JSON.stringify(
+              beforeUnshift
+            )}
+            <br><strong>After unshift (fruit):</strong> ${JSON.stringify(fruit)}
+            <br><strong>Code:</strong> fruit.unshift("newFruit");
+          </div>
+        `;
+
+        // Example 10: indexOf() on fruit
+        let index = fruit.indexOf("orange");
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Index of "orange" in fruit:</strong> ${index}
+            <br><strong>Code:</strong> fruit.indexOf("orange");
+          </div>
+        `;
+
+        // Example 11: push() index to fruit
+        let beforePushIndex = [...fruit];
+        fruit.push(index);
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before push index:</strong> ${JSON.stringify(
+              beforePushIndex
+            )}
+            <br><strong>After push index:</strong> ${JSON.stringify(fruit)}
+            <br><strong>Code:</strong> fruit.push(index);
+          </div>
+        `;
+
+        // Example 12: length of vegetables
+        let arrlen = vegetables.length;
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Length of vegetables:</strong> ${arrlen}
+            <br><strong>Code:</strong> vegetables.length;
+          </div>
+        `;
+
+        // Example 13: push length to vegetables
+        let beforePushLength = [...vegetables];
+        vegetables.push(arrlen);
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before push length:</strong> ${JSON.stringify(
+              beforePushLength
+            )}
+            <br><strong>After push length:</strong> ${JSON.stringify(
+              vegetables
+            )}
+            <br><strong>Code:</strong> vegetables.push(arrlen);
+          </div>
+        `;
+
+        // Example 14: concat() fruit and vegetables
+        let food = fruit.concat(vegetables);
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before concat:</strong> ${JSON.stringify(
+              fruit
+            )} + ${JSON.stringify(vegetables)}
+            <br><strong>After concat:</strong> ${JSON.stringify(food)}
+            <br><strong>Code:</strong> fruit.concat(vegetables);
+          </div>
+        `;
+
+        // Example 15: splice() on food
+        let beforeSpliceFood = [...food];
+        food.splice(4, 2);
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Before splice on food:</strong> ${JSON.stringify(
+              beforeSpliceFood
+            )}
+            <br><strong>After splice on food:</strong> ${JSON.stringify(food)}
+            <br><strong>Code:</strong> food.splice(4, 2);
+          </div>
+        `;
+
+        // Example 16: Reverse food array
+        let reverseArr = [];
+        for (let i = food.length - 1; i > 0; i--) {
+          reverseArr.push(food[i]);
+        }
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Reversed food array (manual):</strong> ${JSON.stringify(
+              reverseArr
+            )}
+            <br><strong>Code:</strong> for (let i = food.length - 1; i > 0; i--) { reverseArr.push(food[i]); }
+          </div>
+        `;
+
+        // Example 17: reverse() on food
+        let reversedFood = food.reverse();
+        outputDiv.innerHTML += `
+          <div class="result">
+            <strong>Reversed food array (using reverse):</strong> ${JSON.stringify(
+              reversedFood
+            )}
+            <br><strong>Code:</strong> food.reverse();
+          </div>
+        `;
+      }
+    </script>
+  </body>
+</html>

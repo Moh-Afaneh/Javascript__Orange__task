@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task1</title>
+    <style>
+      :root {
+        --clr-dark: #0f172a;
+        --clr-light: rgba(248, 250, 252, 0.8);
+        --clr-primary: #6366f1;
+        --clr-secondary: #e11d48;
+        --clr-text: #1e293b;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--clr-light);
+        text-align: center;
+        padding: 20px;
+      }
+      .container {
+        background: var(--clr-light);
+        backdrop-filter: blur(10px);
+        color: var(--clr-text);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        margin: auto;
+        backdrop-filter: blur(0.2);
+      }
+      h1 {
+        color: var(--clr-primary);
+        font-size: 24px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-bottom: 15px;
+      }
+      label {
+        font-weight: 600;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid var(--clr-primary);
+        border-radius: 5px;
+        outline: none;
+      }
+      button {
+        background-color: var(--clr-secondary);
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+        width: 100%;
+      }
+      button:hover {
+        background-color: var(--clr-primary);
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 16px;
+        color: var(--clr-text);
+        text-align: left;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        border-radius: 8px;
+      }
+      .result p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Task</h1>
+      <div class="input-group">
+        <label for="cash">Cash:</label>
+        <input type="number" id="cash" value="1000" />
+      </div>
+      <div class="input-group">
+        <label for="liabilities">Liabilities:</label>
+        <input type="number" id="liabilities" value="500" />
+      </div>
+      <div class="input-group">
+        <label for="revenues">Revenues:</label>
+        <input type="number" id="revenues" value="1000" />
+      </div>
+      <div class="input-group">
+        <label for="expenses">Expenses:</label>
+        <input type="number" id="expenses" value="500" />
+      </div>
+      <div class="input-group">
+        <label for="equity">Equity:</label>
+        <input type="number" id="equity" value="500" />
+      </div>
+      <div class="input-group">
+        <label for="profit">Profit:</label>
+        <input type="number" id="profit" value="1000" />
+      </div>
+      <div class="input-group">
+        <label for="sales">Sales:</label>
+        <input type="number" id="sales" value="500" />
+      </div>
+      <div class="input-group">
+        <label for="numbers">Numbers (comma-separated):</label>
+        <input type="text" id="numbers" value="7,9,2" />
+      </div>
+      <div class="input-group">
+        <label for="price">Original Price:</label>
+        <input type="number" id="price" value="150" />
+      </div>
+      <div class="input-group">
+        <label for="base">Base Number:</label>
+        <input type="number" id="base" value="2" />
+      </div>
+      <div class="input-group">
+        <label for="exponent">Exponent:</label>
+        <input type="number" id="exponent" value="3" />
+      </div>
+      <div class="input-group">
+        <label for="dividend">Dividend:</label>
+        <input type="number" id="dividend" value="10" />
+      </div>
+      <div class="input-group">
+        <label for="divisor">Divisor:</label>
+        <input type="number" id="divisor" value="4" />
+      </div>
+      <div class="input-group">
+        <label for="percentage">Discount Percentage:</label>
+        <input type="number" id="percentage" value="30" />
+      </div>
+      <div class="input-group">
+        <label for="age">Enter Age:</label>
+        <input type="number" id="age" value="20" />
+      </div>
+      <button onclick="calculate()">Calculate</button>
+      <div class="result" id="output"></div>
+    </div>
+
+    <script>
+      function displayResult(label, value) {
+        let outputDiv = document.getElementById("output");
+        let p = document.createElement("p");
+        p.textContent = `${label}: ${value}`;
+        outputDiv.appendChild(p);
+      }
+
+      function calculate() {
+        let outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+        let cash = parseFloat(document.getElementById("cash").value);
+        let liabilities = parseFloat(
+          document.getElementById("liabilities").value
+        );
+        let base = parseFloat(document.getElementById("base").value);
+        let exponent = parseFloat(document.getElementById("exponent").value);
+        let dividend = parseFloat(document.getElementById("dividend").value);
+        let divisor = parseFloat(document.getElementById("divisor").value);
+        let revenues = parseFloat(document.getElementById("revenues").value);
+        let expenses = parseFloat(document.getElementById("expenses").value);
+        let equity = parseFloat(document.getElementById("equity").value);
+        let profit = parseFloat(document.getElementById("profit").value);
+        let sales = parseFloat(document.getElementById("sales").value);
+        let price = parseFloat(document.getElementById("price").value);
+        let numbers = document
+          .getElementById("numbers")
+          .value.split(",")
+          .map((e) => parseInt(e.trim()));
+        let percentage =
+          parseFloat(document.getElementById("percentage").value) / 100;
+        let age = parseInt(document.getElementById("age").value);
+
+        let cashFlowRatio = cash / liabilities;
+        displayResult("Cash Flow Ratio", cashFlowRatio.toFixed(2));
+
+        let netIncome = revenues - expenses;
+        displayResult("Net Income", netIncome.toFixed(2));
+        let totalAssets = liabilities + equity;
+        displayResult("Total Assets", totalAssets);
+        let NetIncome = profit + sales;
+        displayResult(
+          "Net Income (using Profit Margin and Sales)",
+          totalAssets
+        );
+        let acc = 0;
+        let average = (
+          numbers.reduce((acc, e) => e + acc, 0) / numbers.length
+        ).toFixed(1);
+        displayResult("Average", average);
+        let discountedPrice = price * (1 - percentage);
+        displayResult("Discounted Price", discountedPrice.toFixed(2));
+
+        if (age > 18 && age < 30) {
+          displayResult("Eligibility", "You can join Orange");
+        } else {
+          displayResult("Eligibility", "Not eligible");
+        }
+
+        let expResult = base ** exponent;
+        displayResult("Exponential Result", expResult);
+
+        let remainderResult = dividend % divisor;
+        displayResult("Remainder Result", remainderResult);
+      }
+    </script>
+  </body>
+</html>

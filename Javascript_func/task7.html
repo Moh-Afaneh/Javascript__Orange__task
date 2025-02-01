@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Loops and Functions</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+      h1 {
+        color: #4f46e5;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #4f46e5;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #333;
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: left;
+      }
+      p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Loops and Functions</h1>
+    <button onclick="performOperations()">Run JavaScript</button>
+    <div id="output"></div>
+
+    <script>
+      function performOperations() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+
+        function logResult(description, value) {
+          console.log(description, value);
+          let p = document.createElement("p");
+          p.innerHTML = `<b>${description}:</b> ${JSON.stringify(value)}`;
+          outputDiv.appendChild(p);
+        }
+
+        // 1. While loop to print numbers from 1 to 10
+        let num = 1;
+        let result = [];
+        while (num <= 10) {
+          result.push(num);
+          num++;
+        }
+        logResult("Numbers from 1 to 10 using while loop", result);
+
+        // 2. For loop to iterate through an array and print each element
+        const array = [1, 2, 3, 4, 5];
+        result = [];
+        for (let i = 0; i < array.length; i++) {
+          result.push(array[i]);
+        }
+        logResult("Array elements printed using for loop", result);
+
+        // 3. For loop to print even numbers from 0 to 10
+        result = [];
+        for (let i = 0; i <= 10; i += 2) {
+          result.push(i);
+        }
+        logResult("Even numbers from 0 to 10", result);
+
+        // 4. For loop to print the sum of numbers from 1 to 10
+        let sum = 0;
+        for (let i = 1; i <= 10; i++) {
+          sum += i;
+        }
+        logResult("Sum of numbers from 1 to 10", sum);
+
+        // 5. For loop to find the largest number in an array
+        const numbers = [1, 2, 3, 4, 5];
+        let largest = numbers[0];
+        for (let i = 1; i < numbers.length; i++) {
+          if (numbers[i] > largest) {
+            largest = numbers[i];
+          }
+        }
+        logResult("Largest number in array", largest);
+
+        // 6. For loop to find the average of numbers in an array
+        const arr = [1, 2, 3, 4, 5];
+        let total = 0;
+        for (let i = 0; i < arr.length; i++) {
+          total += arr[i];
+        }
+        const average = total / arr.length;
+        logResult("Average of numbers in array", average);
+
+        // 7. Find the factorial of a number
+        const numFactorial = 5;
+        let factorial = 1;
+        for (let i = 1; i <= numFactorial; i++) {
+          factorial *= i;
+        }
+        logResult("Factorial of 5", factorial);
+
+        // 8. Fibonacci sequence up to a given number
+        const fibLimit = 10;
+        let fib1 = 0,
+          fib2 = 1;
+        let fibResult = [fib1];
+        while (fib2 <= fibLimit) {
+          fibResult.push(fib2);
+          const next = fib1 + fib2;
+          fib1 = fib2;
+          fib2 = next;
+        }
+        logResult("Fibonacci sequence up to 10", fibResult);
+
+        // 9. Prime numbers up to a given number
+        const primeLimit = 20;
+        let primes = [];
+        for (let num = 2; num <= primeLimit; num++) {
+          let isPrime = true;
+          for (let i = 2; i < num; i++) {
+            if (num % i === 0) {
+              isPrime = false;
+              break;
+            }
+          }
+          if (isPrime) primes.push(num);
+        }
+        logResult("Prime numbers up to 20", primes);
+
+        // 10. Print elements of a 2D array
+        const matrix = [
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9],
+        ];
+        let matrixResult = [];
+        for (let i = 0; i < matrix.length; i++) {
+          for (let j = 0; j < matrix[i].length; j++) {
+            matrixResult.push(matrix[i][j]);
+          }
+        }
+        logResult("Elements of 2D array", matrixResult);
+
+        // 11. Reverse array
+        const reverseArray = [1, 2, 3, 4, 5];
+        let reversed = [];
+        for (let i = reverseArray.length - 1; i >= 0; i--) {
+          reversed.push(reverseArray[i]);
+        }
+        logResult("Array in reverse order", reversed);
+      }
+    </script>
+  </body>
+</html>

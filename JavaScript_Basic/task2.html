@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+
+      h1 {
+        color: #4f46e5;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #4f46e5;
+      }
+
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #333;
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: left;
+      }
+
+      p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Check Data Types in JavaScript</h1>
+    <button onclick="showTypes()">Show Data Types</button>
+    <div id="output"></div>
+    <script>
+      function showTypes() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+
+        function logType(value, explanation) {
+          console.log(value);
+          let p = document.createElement("p");
+          let valueBeforeOperation = `${value}`; // No need for JSON.stringify for non-objects
+          p.innerHTML = `${valueBeforeOperation} => ${typeof eval(
+            valueBeforeOperation
+          )} <br><i>Explanation: ${explanation}</i>`;
+          outputDiv.appendChild(p);
+        }
+
+        logType(
+          "100",
+          "100 is a number literal (as a string), so it will be evaluated as 'number' when used."
+        );
+        logType(
+          "73.9",
+          "73.9 is a floating-point number (as a string), still of type 'number' when evaluated."
+        );
+        logType(
+          "NaN",
+          "NaN is a string representation, but when evaluated, it's considered a 'number'."
+        );
+        logType(
+          '"Water"',
+          "'Water' is a string literal, so it will be evaluated as 'string'."
+        );
+        logType(
+          "false",
+          "The string 'false' is not a boolean, it's just a string, and will be evaluated as 'string'."
+        );
+
+        // Showing '9 != 11' before evaluation
+        let expression = "9 != 11";
+        logType(
+          expression,
+          `The expression '${expression}' evaluates to '${eval(
+            expression
+          )}', which is a boolean.`
+        );
+
+        logType(
+          '"Orang" + "e"',
+          "Concatenating the strings 'Orang' and 'e' results in the string 'Orange'."
+        );
+        logType(
+          '"Orange" - "s"',
+          "Subtraction of strings results in NaN because string subtraction is invalid."
+        );
+        logType(
+          '"4" + "8"',
+          "Concatenating the strings '4' and '8' results in the string '48'."
+        );
+        logType(
+          '"4" - "8"',
+          "Subtraction of strings results in NaN because string subtraction is invalid."
+        );
+        logType(
+          '"name" + 3',
+          "Concatenating the string 'name' with 3 results in the string 'name3'."
+        );
+        logType(
+          '"name" - 3',
+          "Subtraction of a string and a number results in NaN."
+        );
+        logType(
+          '82 * "word"',
+          "Multiplying a number by a non-numeric string results in NaN."
+        );
+        logType(
+          '1 + "hello"',
+          "Adding a number and a string results in string concatenation: '1hello'."
+        );
+        logType(
+          '"hello" + 1',
+          "Concatenating a string and a number results in 'hello1'."
+        );
+        logType(
+          "1 + true",
+          "Adding a number and a boolean results in a number: 1 + true = 2."
+        );
+        logType(
+          '"hello" + true',
+          "Concatenating a string and a boolean results in 'hellotrue'."
+        );
+        logType(
+          "Infinity",
+          "Infinity is a special number representing an overflow result in JavaScript."
+        );
+        logType(
+          "1 == '1'",
+          "1 == '1' is true because JavaScript converts the string to a number."
+        );
+        logType(
+          "1 === '1'",
+          "1 === '1' is false because the strict equality operator checks both value and type."
+        );
+      }
+    </script>
+  </body>
+</html>
